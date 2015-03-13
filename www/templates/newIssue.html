@@ -3,6 +3,55 @@
     <button type="button" ng-controller="LogoutCtrl" ng-click="logOut()" class="button">Log Out</button>
   </ion-nav-buttons>
   <ion-content>
-    <p>new issue</p>
+
+
+    <!-- The issue form that the citizen must fill. -->
+    <form name="loginForm">
+
+      <!-- Ionic uses lists to group related input elements. -->
+      <div class="list">
+        <label class="item item-input">
+          <!-- Note the required="required" attribute used for validation. -->
+          <input type="text" placeholder="Description" ng-model="issue.description" required="required"/>
+        </label>
+
+
+         <ion-content>
+
+      <ion-list>
+        <div ng-repeat="group in groups">
+          <ion-item class="item-stable"
+                    ng-click="toggleGroup(group)"
+                    ng-class="{active: isGroupShown(group)}">
+              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            &nbsp;
+            Group {{group.name}}
+          </ion-item>
+          <ion-item class="item-accordion"
+                    ng-repeat="item in group.items"
+                    ng-show="isGroupShown(group)">
+            {{item}}
+          </ion-item>
+        </div>
+      </ion-list>
+
+    </ion-content>
+
+
+        
+      </div>
+
+      <!-- Display an error message here, above the submit button, if an error occurred. -->
+      <p ng-if="error" class="error">{{ error }}</p>
+
+      <!--
+        The submit button.
+        The "ng-click" directive indicates which scope function to call when the form is submitted.
+        The "ng-disabled" directive is used to disable the button if the form is invalid (i.e. the first name or last name is missing).
+      -->
+      <button class="button button-full button-positive" ng-click="register()" ng-disabled="loginForm.$invalid">Add</button>
+    </form>
+
+
   </ion-content>
 </ion-view>

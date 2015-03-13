@@ -24,3 +24,7 @@
     border-color: #161616;
     color: #fff;
 }
+.leaflet-container{
+    width: 100%;
+    height: 100%;
+}

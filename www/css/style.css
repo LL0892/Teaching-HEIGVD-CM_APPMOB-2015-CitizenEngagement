@@ -1,1 +1,26 @@
 /* Empty. Add your own CSS if you like */
+
+/*.scroll-content {
+    background-image: url("background_image.jpg");
+    background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: center; 
+}*/
+
+.login{
+	background-image: url("cities-skylines.jpg");
+    background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center; 
+}
+
+.button.disabled, .button[disabled] {
+    cursor: default !important;
+    opacity: 0.9;
+    pointer-events: none;
+}
+.button.button-positive {
+    background-color: #161616;
+    border-color: #161616;
+    color: #fff;
+}

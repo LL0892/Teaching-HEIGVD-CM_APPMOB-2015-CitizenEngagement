@@ -58,6 +58,7 @@ myapp.run(function($ionicPlatform) {
     })
 
     // The three next states are for each of the three tabs.
+
     // The state names start with "tab.", indicating that they are children of the "tab" state.
     .state('tab.newIssue', {
       // The URL (here "/newIssue") is used only internally with Ionic; you never see it displayed anywhere.

@@ -92,7 +92,7 @@ $textGrey = #6f6f6f //text color grey unselected
   display: block !important;
 }
 .item-input textarea {
-    height: 500px;
+    
     width: 100%;
     resize: none;
 }
@@ -103,4 +103,15 @@ $textGrey = #6f6f6f //text color grey unselected
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: inherit;
+}
+
+.issueTitle, .state{
+  display: inline-block;
+}
+
+.state {
+    font-size: 0.8em !important;
+    position: absolute;
+    right: 20px;
+    text-align: right;
 }

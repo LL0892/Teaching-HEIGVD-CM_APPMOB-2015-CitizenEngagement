@@ -10,7 +10,8 @@ var myapp = angular.module('citizen-engagement', [
   'citizen-engagement.constants', 
   'citizen-engagement.issues',
   'citizen-engagement.map',
-  'leaflet-directive'])
+  'leaflet-directive',
+  'geolocation'])
 
 myapp.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

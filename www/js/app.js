@@ -73,6 +73,7 @@ myapp.run(function($ionicPlatform) {
       }
     })
 
+    // This is the issue map state.
     .state('tab.issueMap', {
       url: '/issueMap',
       views: {
@@ -83,6 +84,7 @@ myapp.run(function($ionicPlatform) {
       }
     })
 
+    // This is the issue list state.
     .state('tab.issueList', {
       url: '/issueList',
       views: {

@@ -9,15 +9,21 @@
 
 <ion-list>
 
-  <ion-item ng-repeat="issue in issues">
+  
 	<div class="list">
-	    <a class="item item-thumbnail-left" href="">
+	    <a class="item item-thumbnail-left" href="" ng-repeat="issue in issues">
 	      <img src="{{issue.imageUrl}}">
 	      <h2>{{issue.issueType.name}}</h2>
+	      {{issue.state}}
 	      <p>{{issue.description}}</p>
+	      <ul>
+	      	<li>lat</li>
+			<li>long</li>
+	      </ul>
+
 	    </a>
 	</div>
-  </ion-item>
+  
 </ion-list>
 
 

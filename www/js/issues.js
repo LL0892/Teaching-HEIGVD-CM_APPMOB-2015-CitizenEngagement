@@ -2,6 +2,7 @@ angular.module('citizen-engagement.issues', ['angular-storage'])
 
 .controller('IssueController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
 
+		// GET issues
 		IssueService.getIssues(
 			function(data){
 				$scope.issues = data;
@@ -9,23 +10,17 @@ angular.module('citizen-engagement.issues', ['angular-storage'])
 			function(error){
 				$log(error);
 			}
-		)
+		);
 
-
-		addIssue = function (callback, errorCallback){
-			$http({
-				method: 'POST',
-				url: apiUrl + '/issues/',
-				data: issue
-			}).success(function(data, status, headers, config){
-				$scope.issue = data;
-				$log.debug(status);
-			}).error(function(data, status, headers, config){
-				errorCallback(data);
-			})		
-		};
-
-
+		// GET issuetypes
+		IssueService.getIssueTypes(
+			function(data){
+				$scope.issueTypes = data;
+			},
+			function(error){
+				$log(error);
+			}
+		);
 })
 
 .factory('IssueService', function($http, apiUrl, $log){
@@ -49,7 +44,7 @@ angular.module('citizen-engagement.issues', ['angular-storage'])
 		},
 
 		// Create a new issue.
-		postIssue : function (callback, errorCallback){
+		addIssue : function (callback, errorCallback){
 			$http({
 				method: 'POST',
 				url: apiUrl + '/issues',
@@ -62,7 +57,7 @@ angular.module('citizen-engagement.issues', ['angular-storage'])
 		},
 
 		// Retrieve the details of a specific issue.
-		getIssueDetail : function(callback, errorCallback){
+		getIssueDetails : function(callback, errorCallback){
 			$http({
 				method: 'GET',
 				url: apiUrl + '/issues/:id'
@@ -76,7 +71,7 @@ angular.module('citizen-engagement.issues', ['angular-storage'])
 
 		// Perform MongoDB queries directly by given the query through the JSON payload. 
 		//Refers to the MongoDB query. Queries are limited to the issues only.
-		searchIssue : function(callback, errorCallback){
+		searchIssues : function(callback, errorCallback){
 
 		},
 
@@ -103,14 +98,15 @@ angular.module('citizen-engagement.issues', ['angular-storage'])
 		},
 
 		// Retrieve the details of a specific issue type.
-		getIssueTypeDetail : function(){
+		getIssueTypeDetails : function(){
 			$http({
 				method: 'GET',
 				url: apiUrl + '/issuetypes/:id'
 			}).success(function(data, status, headers, config){
-				// todo
+				callback(data);
+				$log.debug(status);
 			}).error(function(data, status, headers, config){
-				// todo
+				errorCallback(data);
 			});			
 		}
 	}

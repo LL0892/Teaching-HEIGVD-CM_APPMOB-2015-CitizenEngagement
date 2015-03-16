@@ -11,8 +11,10 @@
 	<div class="list">
 	    <a class="item item-thumbnail-left" href="" ng-repeat="issue in issues">
 	      <img src="{{issue.imageUrl}}">
-	      <h2 class="issueTitle">{{issue.issueType.name}}</h2>
-	      <p class="state">{{issue.state}}</p>
+	      <header>
+	      	<h2 class="issueTitle">{{issue.issueType.name}}</h2>
+	      	<p class="state">{{issue.state}}</p>
+	  	  </header>
 	      <p>{{issue.description}}</p>
 	      
 	    </a>

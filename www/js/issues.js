@@ -1,12 +1,15 @@
 angular.module('citizen-engagement.issues', ['angular-storage'])
 
-.factory('issueService', ['issueService', 
-	function($http){
-		function getIssues (){
-			$http.get(apiUrl + 'users').sucess().error();			
-		}
+.controller('IssueController', function($http, $scope, apiUrl, AuthService){
 
-		function addIssue (){
-			$http.post(apiUrl + 'users').sucess().error();
+		$scope.getIssues = function (){
+			console.log('click');
+			$http({
+				method: 'GET',
+				url: apiUrl + '/issues/',
+				data: $scope.issues
+			}).success(function(data, status, headers, config){
+				$scope.issues = data;
+			});		
 		}
-}]);
+});

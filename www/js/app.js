@@ -89,7 +89,8 @@ myapp.run(function($ionicPlatform) {
       url: '/issueList',
       views: {
         'tab-issueList': {
-          templateUrl: 'templates/issueList.html'
+          templateUrl: 'templates/issueList.html',
+          controller: 'IssueController'
         }
       }
     })

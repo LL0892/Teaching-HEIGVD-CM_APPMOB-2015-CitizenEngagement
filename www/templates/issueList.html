@@ -4,5 +4,10 @@
   </ion-nav-buttons>
   <ion-content>
   	<p>the list of the issues</p>
+  	<form>
+  		<button class="button button-full button-positive" ng-click="getIssues()">get issue list</button>
+ 	</form>
+
+ 	<p ng-repeat="issue in issues">{{issue.description}}</p>
   </ion-content>
 </ion-view>

@@ -1,4 +1,4 @@
-angular.module('citizen-engagement.issues', ['angular-storage'])
+angular.module('citizen-engagement.issues', [])
 
 .controller('IssueController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
 

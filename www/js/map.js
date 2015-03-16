@@ -1,6 +1,6 @@
-var myapp = angular.module('citizen-engagement.map', []);
+var myapp = angular.module('citizen-engagement.map', ['geolocation']);
 
-myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToken){
+myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToken, geolocation){
 	
 	var mapboxTileLayer = "http://api.tiles.mapbox.com/v4/" + mapboxMapId;
 	mapboxTileLayer = mapboxTileLayer + "/{z}/{x}/{y}.png?access_token=" + mapboxAccessToken;
@@ -14,6 +14,15 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 		lng: 0,
 		zoom: 14
 	};
+
+	geolocation.getLocation().then(function(data) {
+		$scope.mapCenter.lat = data.coords.latitude;
+		$scope.mapCenter.lng = data.coords.longitude;
+		}, 
+		function(error) {
+			$log.error("Could not get location: " + error);
+		}
+	);
 
 	$scope.mapMarkers = [];
 

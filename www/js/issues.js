@@ -1,6 +1,6 @@
 angular.module('citizen-engagement.issues', [])
 
-.controller('IssueController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
+.controller('IssueController', function(IssueService, $log, $http, $scope, apiUrl){
 
 	// GET issues
 	IssueService.getIssues(
@@ -14,7 +14,7 @@ angular.module('citizen-engagement.issues', [])
 
 })
 
-.controller('NewIssueController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
+.controller('NewIssueController', function(IssueService, $log, $http, $scope, apiUrl){
 		
 	// GET issuetypes
 	IssueService.getIssueTypes(
@@ -25,20 +25,36 @@ angular.module('citizen-engagement.issues', [])
 			$log(error);
 		}
 	);
+	
+	function getType () {
+		console.log('click');
+		$http({
+			method: GET,
+			url: apiUrl +'/issueTypes'
+		}).success(function(data){
+			$scope.data
+		}),error(function(){
+			$scope.error = 'an error occured';
+		})
+	}
+
+	$scope.types = [{'name': 'type1'}, {'name': 'type2'}, {'name': 'type3'}];
 
 	function addIssue (issueToAdd){
 		//IssueService.addIssue(issueToAdd);
 		console.log('click');
 	}
 
-	function getIssueTypes (){
-		
-	}
-
 })
 
-.controller('IssueDetailsController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
-	
+.controller('IssueDetailsController', function(IssueService, $log, $http, $scope, apiUrl){
+	IssueService.getIssueDetails(
+		function(data){
+			$scope.issueDetails = data;
+		},
+		function(error){
+			$scope.error = error;
+		});
 })
 
 .factory('IssueService', function($http, apiUrl, $log){
@@ -107,7 +123,7 @@ angular.module('citizen-engagement.issues', [])
 		getIssueTypes : function(){
 			$http({
 				method: 'GET',
-				url: apiUrl + '/issuetypes'
+				url: apiUrl + '/issueTypes'
 			}).success(function(data, status, headers, config){
 				// todo
 			}).error(function(data, status, headers, config){
@@ -119,7 +135,7 @@ angular.module('citizen-engagement.issues', [])
 		getIssueTypeDetails : function(){
 			$http({
 				method: 'GET',
-				url: apiUrl + '/issuetypes/:id'
+				url: apiUrl + '/issueTypes/:id'
 			}).success(function(data, status, headers, config){
 				callback(data);
 				$log.debug(status);

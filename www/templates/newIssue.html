@@ -21,13 +21,18 @@
           <div class="input-label">
             IssueType
           </div>
+          <!--get issueType-->
           <select ng-model="issueToAdd.issuetype">
-            <!--get issueType-->
-            <option>Choose an issue type</option>
-            <option ng-repeat="issuetype in issuetypes" value="{{issuetype.name}}">{{issuetype.name}}</option>
+            <option ng-repeat="option in types">{{option.name}}</option>
           </select>
         </label>
       </div>
+
+      <button class="button button-full" ng-click="getType()">get issuetypes</button>
+
+      <pre>{{types}}</pre>
+      <pre>{{issuetypes.name}}</pre>
+      <pre>{{error}}</pre>
 
       <!-- Display an error message here, above the submit button, if an error occurred. -->
       <p ng-if="error" class="error">{{ error }}</p>

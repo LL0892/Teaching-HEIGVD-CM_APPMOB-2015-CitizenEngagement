@@ -32,9 +32,13 @@ angular.module('citizen-engagement.issues', [])
 	}
 
 	function getIssueTypes (){
-		$scope.issuetypes = 'mom';
+		
 	}
 
+})
+
+.controller('IssueDetailsController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
+	
 })
 
 .factory('IssueService', function($http, apiUrl, $log){

@@ -9,7 +9,7 @@
 
   
 	<div class="list">
-	    <a class="item item-thumbnail-left" ng-href="issues/{{issue.id}}" ng-repeat="issue in issues">
+	    <a class="item item-thumbnail-left" ng-href="#/tab/issueDetails/{{issue.id}}" ng-repeat="issue in issues">
 	      <img src="{{issue.imageUrl}}">
 	      <div class="issueHeader">
 	      	<h2 class="issueTitle">{{issue.issueType.name}}</h2>

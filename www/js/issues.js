@@ -2,25 +2,39 @@ angular.module('citizen-engagement.issues', [])
 
 .controller('IssueController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
 
-		// GET issues
-		IssueService.getIssues(
-			function(data){
-				$scope.issues = data;
-			}, 
-			function(error){
-				$log(error);
-			}
-		);
+	// GET issues
+	IssueService.getIssues(
+		function(data){
+			$scope.issues = data;
+		}, 
+		function(error){
+			$log(error);
+		}
+	);
 
-		// GET issuetypes
-		IssueService.getIssueTypes(
-			function(data){
-				$scope.issueTypes = data;
-			},
-			function(error){
-				$log(error);
-			}
-		);
+})
+
+.controller('NewIssueController', function(IssueService, $log, $http, $scope, apiUrl, AuthService){
+		
+	// GET issuetypes
+	IssueService.getIssueTypes(
+		function(data){
+			$scope.issuetypes = data;
+		},
+		function(error){
+			$log(error);
+		}
+	);
+
+	function addIssue (issueToAdd){
+		//IssueService.addIssue(issueToAdd);
+		console.log('click');
+	}
+
+	function getIssueTypes (){
+		$scope.issuetypes = 'mom';
+	}
+
 })
 
 .factory('IssueService', function($http, apiUrl, $log){

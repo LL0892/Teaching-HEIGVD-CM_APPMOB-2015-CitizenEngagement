@@ -69,7 +69,8 @@ myapp.run(function($ionicPlatform) {
         // The "tab-newIssue" view corresponds to the <ion-nav-view name="tab-newIssue"> directive used in the tabs.html template.
         'tab-newIssue': {
           // This defines the template that will be inserted into the directive.
-          templateUrl: 'templates/newIssue.html'
+          templateUrl: 'templates/newIssue.html',
+          controller: 'NewIssueController'
         }
       }
     })

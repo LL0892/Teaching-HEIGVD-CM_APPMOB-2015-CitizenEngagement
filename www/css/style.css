@@ -157,3 +157,24 @@ div .issueHeader:after {
 
 /*--comments--*/
 
+.citizen{
+  color:green;
+}
+.staff{
+  color:red;
+}
+
+
+.staff::after {
+    content: "";
+    display: inline-block;
+    font-family: "Ionicons";
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 1;
+    text-rendering: auto;
+    text-transform: none;
+}
+
+

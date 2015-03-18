@@ -27,7 +27,7 @@ $textGrey = #6f6f6f //text color grey unselected
 /*LOGIN style*/
 
 .login{
-	background-image: url("cities-skylines_flou.jpg");
+	background-image: url("../img/cities-skylines_flou.jpg");
     background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center; 

@@ -40,7 +40,9 @@ angular.module('citizen-engagement.issues', [])
 	//$log.debug($stateParams);
 
 	IssueService.getDetails(
+		$stateParams.issueId,
 		function(data){
+			$log.debug('ctrl');
 			$scope.issue = data;
 		},
 		function(error){
@@ -92,12 +94,13 @@ angular.module('citizen-engagement.issues', [])
 		},
 
 		// Retrieve the details of a specific issue.
-		getDetails : function(id, callback, errorCallback){
+		getDetails : function(issueId, callback, errorCallback){
 			$http({
 				method: 'GET',
-				url: apiUrl + '/issues/' + $stateParams.issueId,
+				url: apiUrl + '/issues/' + issueId,
 			}).success(function(data, status, headers, config){
 				callback(data);
+				$log.debug('service getDetails()');
 			}).error(function(data, status, headers, config){
 				errorCallback(data);
 			});

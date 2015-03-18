@@ -8,7 +8,7 @@
 <img class="issueDetailImage" src="{{issue.imageURL}}">
 <div class="item">
 	<div class="issueHeader">
-		<h2 class="issueTitle">{{issue}}</h2>
+		<h2 class="issueTitle">{{issue.issueType.name}}</h2>
 		<p class="state">{{issue.state}}</p>
 	</div>
 	
@@ -20,11 +20,9 @@
 <div class="item tabs tabs-secondary tabs-icon-left">
     <a class="tab-item" ng-href="#/tab/comments">
       <i class="icon ion-chatbox"></i>
-      Comment<span class="badge badge-assertive">{{commentsCpt}}</span>
+      Comment<span class="badge badge-assertive">0</span>
     </a>
   </div>
-
-  <pre>{{issue}}</pre>
 
 </ion-content>
 

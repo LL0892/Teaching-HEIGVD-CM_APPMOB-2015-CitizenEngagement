@@ -20,29 +20,16 @@ angular.module('citizen-engagement.issues', [])
 	IssueService.getIssueTypes(
 		function(data){
 			$scope.issuetypes = data;
+			$log.debug(data);
 		},
 		function(error){
-			$log(error);
+			$log.debug(error);
 		}
 	);
-	
-	function getType () {
-		console.log('click');
-		$http({
-			method: GET,
-			url: apiUrl +'/issueTypes'
-		}).success(function(data){
-			$scope.data
-		}),error(function(){
-			$scope.error = 'an error occured';
-		})
-	}
-
-	$scope.types = [{'name': 'type1'}, {'name': 'type2'}, {'name': 'type3'}];
 
 	function addIssue (issueToAdd){
 		//IssueService.addIssue(issueToAdd);
-		console.log('click');
+		$log.debug('click');
 	}
 
 })
@@ -84,9 +71,9 @@ angular.module('citizen-engagement.issues', [])
 				url: apiUrl + '/issues',
 				data: issue
 			}).success(function(data, status, headers, config){
-				// todo			
+				callback(data);		
 			}).error(function(data, status, headers, config){
-				// todo
+				errorCallback(data);
 			});
 		},
 
@@ -120,14 +107,14 @@ angular.module('citizen-engagement.issues', [])
 		// ************
 
 		// Retrieve the list of issue types.
-		getIssueTypes : function(){
+		getIssueTypes : function(callback, errorCallback){
 			$http({
 				method: 'GET',
 				url: apiUrl + '/issueTypes'
 			}).success(function(data, status, headers, config){
-				// todo
+				callback(data);
 			}).error(function(data, status, headers, config){
-				// todo
+				errorCallback(data);
 			});
 		},
 

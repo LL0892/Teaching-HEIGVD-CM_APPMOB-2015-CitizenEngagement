@@ -12,6 +12,10 @@ angular.module('citizen-engagement.issues', [])
 		}
 	);
 
+	function getDetails(){
+		
+	}
+
 })
 
 .controller('NewIssueController', function(IssueService, $log, $http, $scope, apiUrl){
@@ -35,12 +39,28 @@ angular.module('citizen-engagement.issues', [])
 })
 
 .controller('IssueDetailsController', function(IssueService, $log, $http, $scope, apiUrl){
+	/*function getDetails (id){
+		$http({
+			method: 'GET',
+			url: apiUrl + '/issues/:id',
+			params: {id: id}
+		}).success(function(data, status, headers, config){
+			$scope.details = data;
+			//$log.debug(data);
+		}).error(function(data, status, headers, config){
+			$scope.error = data;
+			//$log.debug('error');
+		});
+	}*/
+
 	IssueService.getIssueDetails(
 		function(data){
 			$scope.issueDetails = data;
+			$log.debug(data);
 		},
 		function(error){
 			$scope.error = error;
+			$log.debug('error');
 		});
 })
 
@@ -58,7 +78,6 @@ angular.module('citizen-engagement.issues', [])
 				url: apiUrl + '/issues/'
 			}).success(function(data, status, headers, config){
 				callback(data);
-				$log.debug(status);
 			}).error(function(data, status, headers, config){
 				errorCallback(data);
 			});		
@@ -78,11 +97,11 @@ angular.module('citizen-engagement.issues', [])
 		},
 
 		// Retrieve the details of a specific issue.
-		getIssueDetails : function(callback, errorCallback){
+		getIssueDetails : function(issue, callback, errorCallback){
 			$http({
 				method: 'GET',
-				url: apiUrl + '/issues/:id'
-				//data: issueId
+				url: apiUrl + '/issues/:id',
+				params: {id: issue.id}
 			}).success(function(data, status, headers, config){
 				// todo
 			}).error(function(data, status, headers, config){

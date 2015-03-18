@@ -114,9 +114,11 @@ myapp.run(function($ionicPlatform) {
      // This is the issue comment state.
     .state('tab.comments', {
       url: '/comments',
-      templateUrl: 'templates/comments.html',
-      controller: 'CommentController'  
-      
+      views: {
+        'tab-issueDetails': {
+          templateUrl: 'templates/comments.html',
+          controller: 'CommentController'  
+      }}
     })
 
     .state('login', {

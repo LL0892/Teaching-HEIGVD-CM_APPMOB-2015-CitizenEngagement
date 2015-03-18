@@ -126,7 +126,7 @@ myapp.run(function($ionicPlatform) {
     .state('tab.user', {
       url: '/user',
       views: {
-        'tab-issueList': {
+        'tab-user': {
           templateUrl: 'templates/user.html'
       }}
     })

@@ -1,6 +1,6 @@
 var myapp = angular.module('citizen-engagement.map', ['geolocation']);
 
-myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToken, geolocation){
+myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToken, geolocation, IssueService, $log){
 	
 	var mapboxTileLayer = "http://api.tiles.mapbox.com/v4/" + mapboxMapId;
 	mapboxTileLayer = mapboxTileLayer + "/{z}/{x}/{y}.png?access_token=" + mapboxAccessToken;
@@ -24,9 +24,25 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 		}
 	);
 
+	// GET issues
+	IssueService.getIssues(
+		function(data){
+			$scope.mapMarkers = data;
+		}, 
+		function(error){
+			$log(error);
+		}
+	);
+
 	$scope.mapMarkers = [];
 
-	//var issue = IssueService.getIssue();
+	// Push each marker on the map
+	for (var i = $scope.mapMarkers.length - 1; i >= 0; i--) {
+		$scope.mapMarkers[i].push({
+			lat: issue.lat,
+			lng: issue.lng
+		})
+	};
 
 /*	$scope.mapMarkers.push({
 		lat: issue.lat,

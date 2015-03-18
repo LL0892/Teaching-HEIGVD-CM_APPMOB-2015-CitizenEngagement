@@ -42,7 +42,15 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 			lat: issue.lat,
 			lng: issue.lng
 		})
-	};
+	}; 
+
+	function createMarkerScope(issue){
+		return function(){
+			var scope = $scope.$new();
+			scope.issue = issue;
+			return issue;
+		}
+	}
 
 /*	$scope.mapMarkers.push({
 		lat: issue.lat,

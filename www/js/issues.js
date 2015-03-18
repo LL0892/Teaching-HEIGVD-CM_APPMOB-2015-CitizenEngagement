@@ -44,8 +44,8 @@ angular.module('citizen-engagement.issues', [])
 
 })
 
-.controller('IssueDetailsController', function(IssueService, $log, $http, $scope, apiUrl){
-	
+.controller('IssueDetailsController', function(IssueService, $log, $http, $scope, $stateParams){
+	var issueId = $stateParams.issueId;
 })
 
 .factory('IssueService', function($http, apiUrl, $log){

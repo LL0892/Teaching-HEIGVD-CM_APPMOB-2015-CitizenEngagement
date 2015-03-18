@@ -122,6 +122,15 @@ myapp.run(function($ionicPlatform) {
       }}
     })
 
+    // This is the user state.
+    .state('tab.user', {
+      url: '/user',
+      views: {
+        'tab-issueList': {
+          templateUrl: 'templates/user.html'
+      }}
+    })
+
     .state('login', {
       url: '/login',
       controller: 'LoginCtrl',

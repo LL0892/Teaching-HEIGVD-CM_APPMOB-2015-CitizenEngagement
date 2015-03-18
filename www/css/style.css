@@ -76,6 +76,10 @@ $textGrey = #6f6f6f //text color grey unselected
     height: 100%;
 }
 
+ .leaflet-control {
+    display: none;
+}
+
 /*----ADD Issue----*/
 
 .list .item.item-accordion {
@@ -154,6 +158,15 @@ div .issueHeader:after {
     *text-align: right;
 }
 
+/*----Issue Details---*/
+
+.issueDetailImage{
+    width: 100%;
+    height: auto;
+}
+.commentsButton{
+    
+}
 
 /*--comments--*/
 

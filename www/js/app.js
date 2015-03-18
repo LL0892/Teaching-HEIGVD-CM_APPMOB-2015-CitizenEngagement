@@ -143,6 +143,9 @@ myapp.run(function($ionicPlatform) {
   });
 })
 
+
+
 .config(function($httpProvider) {
   $httpProvider.interceptors.push('AuthInterceptor');
 });
+

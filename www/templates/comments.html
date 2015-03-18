@@ -26,14 +26,35 @@
 				</div>
 				<p>True story bro... She also invented the flat design</p>
 			</div>
-			<div class="item tabs tabs-secondary tabs-icon-left">
-    
-    <a class="tab-item" ng-href="">
+
+
+<div class="item tabs tabs-secondary tabs-icon-left" ng-show="checked">
+    <div class="tab-item">
       <i class="icon ion-chatbox"></i>
       Comment
-    </a>
-    
+    </div>
+</div>
+
+<input type="checkbox" ng-model="checked"><br/>
+<div>
+  <div class="check-element animate-show" ng-show="checked">
+    I show up when your checkbox is checked.
   </div>
+</div>
+
+
+    
+    
+  
+
+
+
+
+
+
+</div>
+
+
 
 		
 	</ion-content>

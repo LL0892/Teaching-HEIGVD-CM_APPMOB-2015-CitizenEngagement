@@ -5,7 +5,7 @@
 
 <ion-content>
 
-<img class="" src="http://cdn2.hubspot.net/hub/372659/file-647474867-jpg/blog-files/lightpole2.jpg?t=1424816062643">
+<img class="issueDetailImage" src="http://cdn2.hubspot.net/hub/372659/file-647474867-jpg/blog-files/lightpole2.jpg?t=1424816062643">
 <div class="item">
 	<div class="issueHeader">
 		<h2 class="issueTitle">{{issue.issueType.name}}</h2>
@@ -16,9 +16,17 @@
 	<hr>
 	<div>tag tag tag</div>	 
 </div>
-	<a ng-href="#/tab/comments"><button class="button button-full button-positive">
-  		comments
-	</button></a>
+
+<div class="item tabs tabs-secondary tabs-icon-left">
+    
+    <a class="tab-item" ng-href="#/tab/comments">
+      <i class="icon ion-chatbox"></i>
+      Comment<span class="badge badge-assertive">0</span>
+    </a>
+    
+  </div>
+
+	
 
 
 	

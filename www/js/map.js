@@ -25,9 +25,11 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 	);
 
 	$scope.mapMarkers = [];
+	var pageCpt = 0;
 
 	// GET issues
 	IssueService.getIssues(
+		pageCpt,
 		function(data){
 			$scope.mapMarkers = data;
 		}, 

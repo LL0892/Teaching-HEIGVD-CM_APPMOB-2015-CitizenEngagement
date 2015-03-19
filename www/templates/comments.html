@@ -8,9 +8,9 @@
 		<div class="item">
 			<div class="issueHeader">
 				<h2 class="issueTitle citizen">{{comment.author.name}}</h2>
-				<p class="state">{{comment.postedOn}}</p>
+				<p class="state">{{comment.postedOn | date:'medium'}}</p>
 			</div>
-			<p>{{comment.text}}</p>
+			<p id="commentLimit">{{comment.text}}</p>
 		</div>
 	</div>
 	

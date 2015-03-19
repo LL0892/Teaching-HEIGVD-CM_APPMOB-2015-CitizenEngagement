@@ -11,7 +11,10 @@ var myapp = angular.module('citizen-engagement', [
   'citizen-engagement.issues',
   'citizen-engagement.map',
   'leaflet-directive',
-  'geolocation'])
+  'geolocation',
+  'angularReverseGeocode'])
+
+
 
 myapp.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {

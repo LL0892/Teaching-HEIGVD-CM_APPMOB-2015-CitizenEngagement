@@ -3,8 +3,8 @@
 <button type="button" ng-controller="LogoutCtrl" ng-click="logOut()" class="button">Log Out</button>
 </ion-nav-buttons>
 
-	<ion-content>
-	<div class="comments" ng-repeat="comment in comments">
+<ion-content>
+<div class="comments" ng-repeat="comment in comments">
 		<div class="item">
 			<div class="issueHeader">
 				<h2 class="issueTitle citizen">{{comment.author.name}}</h2>
@@ -13,19 +13,43 @@
 			<p>{{comment.text}}</p>
 		</div>
 	</div>
+	
 
-		<div class="item tabs tabs-secondary tabs-icon-left" ng-show="checked">
-			<div class="tab-item">
-				<i class="icon ion-chatbox"></i>
-				Comment
+
+	<div class="item tabs tabs-secondary tabs-icon-left" ng-click="showme=true">
+		<div class="tab-item">
+			<i class="icon ion-chatbox"></i>
+			Comment
+		</div>
+	</div>
+	
+
+
+	<div>
+		<div class="animate-show" ng-show="showme">
+			<div class="list">
+				<label class="item item-input">
+					<textarea placeholder="Comments"></textarea>
+				</label>
+				<button class="button button-block button-positive" ng-click="register()" ng-disabled="loginForm.$invalid">Send</button>
 			</div>
 		</div>
+	</div>
 
-		<input type="checkbox" ng-model="checked"><br/>
-		<div>
-			<div class="check-element animate-show" ng-show="checked">
-				I show up when your checkbox is checked.
-			</div>
-		</div>
-	</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ion-content>
 </ion-view>

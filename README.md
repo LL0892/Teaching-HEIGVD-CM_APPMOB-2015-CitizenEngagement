@@ -1,4 +1,4 @@
-API URL - Heroku : https://radiant-headland-3473.herokuapp.com/api
+API URL - Heroku : https://radiant-headland-3473.herokuapp.com/
 
 # Citizen Engagement Mobile Application
 

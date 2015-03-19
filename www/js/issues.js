@@ -1,5 +1,7 @@
 angular.module('citizen-engagement.issues', [])
 
+
+// Controller Issue List Page
 .controller('IssueController', function(IssueService, $log, $http, $scope, apiUrl){
 
 	// GET issues
@@ -42,7 +44,6 @@ angular.module('citizen-engagement.issues', [])
 	IssueService.getDetails(
 		$stateParams.issueId,
 		function(data){
-			$log.debug('ctrl');
 			$scope.issue = data;
 			$scope.commentsCpt = data.comments.length;
 		},
@@ -54,6 +55,20 @@ angular.module('citizen-engagement.issues', [])
 })
 
 
+// Controller Comments Page
+.controller('CommentsController', function(IssueService, $log, $scope, $stateParams){
+
+	IssueService.getComments($stateParams.issueId,
+		function(data){
+			$scope.comments = data;
+			$log.debug(data);
+		},
+		function(error){
+			$scope.error = error;
+		}
+	);
+
+})
 
 
 
@@ -61,13 +76,24 @@ angular.module('citizen-engagement.issues', [])
 
 
 
-
-.factory('IssueService', function($http, apiUrl, $log, $stateParams){
+.factory('IssueService', function($http, apiUrl, $log){
 	return {
 
 		// ********
 		// ISSUES
 		// ********
+
+		// Get a list of comment for this issue
+		getComments : function(issueId, callback, errorCallback){
+			$http({
+				method: 'GET',
+				url: apiUrl + '/issues/' + issueId,
+			}).success(function(data, status, headers, config){
+				callback(data.comments);
+			}).error(function(data, status, headers, config){
+				errorCallback(data);
+			});
+		},
 
 		// Get a list of issues.
 		getIssues : function (callback, errorCallback){
@@ -101,7 +127,6 @@ angular.module('citizen-engagement.issues', [])
 				url: apiUrl + '/issues/' + issueId,
 			}).success(function(data, status, headers, config){
 				callback(data);
-				$log.debug('service getDetails()');
 			}).error(function(data, status, headers, config){
 				errorCallback(data);
 			});
@@ -142,7 +167,6 @@ angular.module('citizen-engagement.issues', [])
 				url: apiUrl + '/issueTypes/:id'
 			}).success(function(data, status, headers, config){
 				callback(data);
-				$log.debug(status);
 			}).error(function(data, status, headers, config){
 				errorCallback(data);
 			});			

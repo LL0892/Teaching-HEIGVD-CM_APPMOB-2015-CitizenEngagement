@@ -1,61 +1,31 @@
 <ion-view view-title="Comments">
-	<ion-nav-buttons side="secondary">
-		<button type="button" ng-controller="LogoutCtrl" ng-click="logOut()" class="button">Log Out</button>
-	</ion-nav-buttons>
+<ion-nav-buttons side="secondary">
+<button type="button" ng-controller="LogoutCtrl" ng-click="logOut()" class="button">Log Out</button>
+</ion-nav-buttons>
 
 	<ion-content>
-		<div class="comments">
-			<div class="item">
-				<div class="issueHeader">
-					<h2 class="issueTitle citizen">Laurent Lienher</h2>
-					<p class="state">18/03/2015</p>
-				</div>
-				<p>Comment of a fucking issue fucked by your broken streetlight of bullshit</p>
+	<div class="comments" ng-repeat="comment in comments">
+		<div class="item">
+			<div class="issueHeader">
+				<h2 class="issueTitle citizen">{{comment.author.name}}</h2>
+				<p class="state">{{comment.postedOn}}</p>
 			</div>
-			<div class="item">
-				<div class="issueHeader">
-					<h2 class="issueTitle staff">Anthony Da Silva - </h2>
-					<p class="state">18/03/2015</p>
-				</div>
-				<p>You moma so fat that when she sit on her iPhone it's turn into an iPad</p>
+			<p>{{comment.text}}</p>
+		</div>
+	</div>
+
+		<div class="item tabs tabs-secondary tabs-icon-left" ng-show="checked">
+			<div class="tab-item">
+				<i class="icon ion-chatbox"></i>
+				Comment
 			</div>
-			<div class="item">
-				<div class="issueHeader">
-					<h2 class="issueTitle citizen">Laurent Lienher</h2>
-					<p class="state">18/03/2015</p>
-				</div>
-				<p>True story bro... She also invented the flat design</p>
+		</div>
+
+		<input type="checkbox" ng-model="checked"><br/>
+		<div>
+			<div class="check-element animate-show" ng-show="checked">
+				I show up when your checkbox is checked.
 			</div>
-
-
-<div class="item tabs tabs-secondary tabs-icon-left" ng-show="checked">
-    <div class="tab-item">
-      <i class="icon ion-chatbox"></i>
-      Comment
-    </div>
-</div>
-
-<input type="checkbox" ng-model="checked"><br/>
-<div>
-  <div class="check-element animate-show" ng-show="checked">
-    I show up when your checkbox is checked.
-  </div>
-</div>
-
-
-    
-    
-  
-
-
-
-
-
-
-</div>
-
-
-
-		
+		</div>
 	</ion-content>
 </ion-view>

@@ -5,7 +5,7 @@
 
 <ion-content>
 
-<img class="issueDetailImage" src="{{issue.imageURL}}">
+<img class="issueDetailImage" ng-src="{{issue.imageUrl}}">
 <div class="item">
 	<div class="issueHeader">
 		<h2 class="issueTitle">{{issue.issueType.name}}</h2>
@@ -14,15 +14,15 @@
 	
 	<p>{{issue.description}}</p>
 	<hr>
-	<div>{{issue.imageUrl}}</div>	 
+	<div>{{issue.tags}}</div>	 
 </div>
 
 <div class="item tabs tabs-secondary tabs-icon-left">
-    <a class="tab-item" ng-href="#/tab/comments">
-      <i class="icon ion-chatbox"></i>
-      Comment<span class="badge badge-assertive">0</span>
-    </a>
-  </div>
+	<a class="tab-item" ng-href="#/tab/comments">
+	  <i class="icon ion-chatbox"></i>
+	  Comment<span class="badge badge-assertive">{{commentsCpt}}</span>
+	</a>
+</div>
 
 </ion-content>
 

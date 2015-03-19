@@ -4,8 +4,12 @@ angular.module('citizen-engagement.issues', [])
 // Controller Issue List Page
 .controller('IssueController', function(IssueService, $log, $http, $scope, apiUrl){
 
+	//var pageCpt = 0;
+
 	// GET issues
+	$scope.currentPage = 0;
 	IssueService.getIssues(
+		$scope.currentPage,
 		function(data){
 			$scope.issues = data;
 		}, 
@@ -14,6 +18,17 @@ angular.module('citizen-engagement.issues', [])
 		}
 	);
 
+	$scope.loadMoreIssues = function(page){
+		IssueService.getIssues(
+			$scope.currentPage++,
+			function(data){
+				Array.prototype.push.apply($scope.issues, data);
+			},
+			function(error){
+				$scope.error = error;
+			}
+		);
+	}
 })
 
 // Controller New Issue Page
@@ -23,14 +38,14 @@ angular.module('citizen-engagement.issues', [])
 	IssueService.getIssueTypes(
 		function(data){
 			$scope.issuetypes = data;
-			$log.debug(data);
+			//$log.debug(data);
 		},
 		function(error){
 			$scope.error = error;
 		}
 	);
 
-	function addIssue (issueToAdd){
+	$scope.addIssue = function (issueToAdd){
 		IssueService.addIssue(issueToAdd);
 	}
 
@@ -39,6 +54,7 @@ angular.module('citizen-engagement.issues', [])
 // Controller Detail Issue Page
 .controller('IssueDetailsController', function(IssueService, $log, $scope, $stateParams){
 	//$log.debug($stateParams);
+	$scope.commentsCpt = 0;
 
 	IssueService.getDetails(
 		$stateParams.issueId,
@@ -77,7 +93,7 @@ angular.module('citizen-engagement.issues', [])
 			$scope.comment,
 			function(data){
 				$scope.comments = data.comments;
-				//$scope.comments.push(data);
+				$scope.comment.text = '';
 			},
 			function(error){
 				$scope.error = error;
@@ -91,11 +107,6 @@ angular.module('citizen-engagement.issues', [])
 })
 
 
-
-
-
-
-
 .factory('IssueService', function($http, apiUrl, $log){
 	return {
 
@@ -104,10 +115,14 @@ angular.module('citizen-engagement.issues', [])
 		// ********
 
 		// Get a list of issues.
-		getIssues : function (callback, errorCallback){
+		getIssues : function (page, callback, errorCallback){
 			$http({
 				method: 'GET',
-				url: apiUrl + '/issues/'
+				url: apiUrl + '/issues/',
+				headers: {
+					'Content-Type': 'application/json',
+					'x-pagination': page + ';10'
+				}
 			}).success(function(data, status, headers, config){
 				callback(data);
 			}).error(function(data, status, headers, config){
@@ -207,6 +222,51 @@ angular.module('citizen-engagement.issues', [])
 			}).error(function(data, status, headers, config){
 				errorCallback(data);
 			});			
+		}
+	}
+})
+
+.controller("CameraController", function(CameraService, $http, qimgUrl, qimgToken) {
+	// take the picture
+	CameraService.getPicture({
+		quality: 75,
+		targetWidth: 400,
+		targetHeight: 300,
+		// return base64-encoded data instead of a file
+		destinationType: Camera.DestinationType.DATA_URL
+	}).then(function(imageData) {
+		// upload the image
+		$http({
+			method: "POST",
+			url: qimgUrl + "/images",
+			headers: {
+				Authorization: "Bearer " + qimgToken
+			},
+			data: {
+				data: imageData
+			}
+		}).success(function(data) {
+			var imageUrl = data.url;
+			// do something with imageUrl
+		});
+	});
+})
+
+.factory("CameraService", function($q) {
+	return {
+		getPicture: function(options) {
+			var deferred = $q.defer();
+			navigator.camera.getPicture(
+				function(result) {
+					// do any magic you need
+					deferred.resolve(result);
+				}, 
+				function(err) {
+					deferred.reject(err);
+				}, 
+				options
+			);
+			return deferred.promise;
 		}
 	}
 });

@@ -172,8 +172,22 @@ div .issueHeader:after {
 
 .tag{
   display: inline-block;
+  font-size: 0.8em;
+
 }
 
+.tabs-striped.tabs-color-dark .tab-item.tab-item-active .badge, .tabs-striped.tabs-color-dark .tab-item.active .badge, .tabs-striped.tabs-color-dark .tab-item.activated .badge {
+      top: 16px;
+      opacity: 1; }
+
+.tags{
+  margin:0;
+  text-align: center;
+}
+.tagBorder{
+  border-color:#ddd;
+  border-style: none none solid;
+}
 /*--comments--*/
 h2 {
     color:inherit;

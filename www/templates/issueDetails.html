@@ -13,10 +13,9 @@
 	</div>
 	
 	<p>{{issue.description}}</p>
-	<hr>
-	
-	<ul>
-		<li ng-repeat="tag in tags" class="icon-right ion-ios-pricetag-outline tag">{{tag}}</li>
+	<hr class="tagBorder">
+	<ul class="tags">
+		<li ng-repeat="tag in tags" class="icon-right ion-ios-pricetag tag">&nbsp;{{tag}}&nbsp;&nbsp;</li>
 	</ul>
 
 

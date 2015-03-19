@@ -46,6 +46,8 @@ angular.module('citizen-engagement.issues', [])
 		function(data){
 			$scope.issue = data;
 			$scope.commentsCpt = data.comments.length;
+			$scope.tags = data.tags;
+			$log.debug($scope.tags);
 		},
 		function(error){
 			$scope.error = error;
@@ -56,18 +58,33 @@ angular.module('citizen-engagement.issues', [])
 
 
 // Controller Comments Page
-.controller('CommentsController', function(IssueService, $log, $scope, $stateParams){
+.controller('CommentsController', function(IssueService, $ionicScrollDelegate, $log, $scope, $stateParams){
 
 	IssueService.getComments($stateParams.issueId,
 		function(data){
 			$scope.comments = data;
-			$log.debug(data);
+			//$log.debug(data);
 		},
 		function(error){
 			$scope.error = error;
 		}
 	);
 
+	addComment = function(post){
+		IssueService.addComments(
+			post,
+			function(data){
+				$scope.comments.push(data);
+			},
+			function(error){
+				$scope.error = error;
+			}
+		);
+	}
+	
+	$scope.scrollBottom = function(){
+		$ionicScrollDelegate.scrollBottom();
+	}
 })
 
 
@@ -82,18 +99,6 @@ angular.module('citizen-engagement.issues', [])
 		// ********
 		// ISSUES
 		// ********
-
-		// Get a list of comment for this issue
-		getComments : function(issueId, callback, errorCallback){
-			$http({
-				method: 'GET',
-				url: apiUrl + '/issues/' + issueId,
-			}).success(function(data, status, headers, config){
-				callback(data.comments);
-			}).error(function(data, status, headers, config){
-				errorCallback(data);
-			});
-		},
 
 		// Get a list of issues.
 		getIssues : function (callback, errorCallback){
@@ -138,11 +143,43 @@ angular.module('citizen-engagement.issues', [])
 
 		},
 
-		// Perform an action on the issue. (available for users)
-		// 2 types of action : comments, tags
-		actionIssue : function(callback, errorCallback){
+		// ***************
+		// ISSUE COMMENTS
+		// ***************
 
+		// Get a list of comment for this issue
+		getComments : function(issueId, callback, errorCallback){
+			$http({
+				method: 'GET',
+				url: apiUrl + '/issues/' + issueId,
+			}).success(function(data, status, headers, config){
+				callback(data.comments);
+			}).error(function(data, status, headers, config){
+				errorCallback(data);
+			});
 		},
+
+		// Add a new comment
+		addComments : function(post, callback, errorCallback){
+			$http({
+				method: 'POST',
+				url: apiUrl + '/issues/' + issueId + '/actions',
+				data: {
+					Comments:
+						{
+						  "type": "comment",
+						  "payload": {
+						    "text": post.text
+						  }
+						}
+				}
+			}).success(function(data, status, headers, config){
+				callback(data);
+			}).error(function(data, status, headers, config){
+				errorCallback(data);
+			});
+		},
+
 
 		// ************
 		// ISSUE TYPES

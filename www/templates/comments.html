@@ -16,7 +16,7 @@
 	
 
 
-	<div class="item tabs tabs-secondary tabs-icon-left" ng-click="showme=true">
+	<div class="item tabs tabs-secondary tabs-icon-left" ng-click="showme = true; scrollBottom()">
 		<div class="tab-item">
 			<i class="icon ion-chatbox"></i>
 			Comment
@@ -25,16 +25,21 @@
 	
 
 
-	<div>
-		<div class="animate-show" ng-show="showme">
-			<div class="list">
-				<label class="item item-input">
-					<textarea placeholder="Comments"></textarea>
-				</label>
-				<button class="button button-block button-positive" ng-click="register()" ng-disabled="loginForm.$invalid">Send</button>
-			</div>
+	<form name="commentForm">
+		<div class="animate-show list" ng-show="showme">
+			<!-- text area -->
+			<label class="item item-input">
+				<textarea ng-model="comment.text" placeholder="Comments" required="required"></textarea>
+			</label>
+
+			<!-- submit button -->
+			<button class="button button-block button-positive" ng-click="addComment()" ng-disabled="commentForm.$invalid">Send</button>
+
+	  		<!-- Display an error message here, above the submit button, if an error occurred. -->
+	  		<p ng-if="error" class="error">{{ error }}</p>
+
 		</div>
-	</div>
+	</form>
 
 
 

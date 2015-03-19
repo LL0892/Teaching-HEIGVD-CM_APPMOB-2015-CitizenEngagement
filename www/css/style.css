@@ -200,8 +200,6 @@ h2 {
   line-height: 20px;
   opacity: 1;
   padding: 10px;
-  border: 1px solid black;
-  background: white;
 }
 
 .animate-show.ng-hide-add.ng-hide-add-active,
@@ -214,12 +212,6 @@ h2 {
   line-height: 0;
   opacity: 0;
   padding: 0 10px;
-}
-
-.check-element {
-  padding: 10px;
-  border: 1px solid black;
-  background: white;
 }
 
 

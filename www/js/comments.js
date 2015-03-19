@@ -12,7 +12,11 @@ angular.module('citizen-engagement.comment', [])
 		}
 	);
 
+
 })
+
+
+
 
 .factory('CommentService', function($http, apiUrl, $log){
 	return {

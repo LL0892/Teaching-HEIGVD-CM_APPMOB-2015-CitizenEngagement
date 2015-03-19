@@ -31,8 +31,7 @@ angular.module('citizen-engagement.issues', [])
 	);
 
 	function addIssue (issueToAdd){
-		//IssueService.addIssue(issueToAdd);
-		$log.debug('click');
+		IssueService.addIssue(issueToAdd);
 	}
 
 })
@@ -60,6 +59,8 @@ angular.module('citizen-engagement.issues', [])
 // Controller Comments Page
 .controller('CommentsController', function(IssueService, $ionicScrollDelegate, $log, $scope, $stateParams){
 
+	$scope.comment = {};
+
 	IssueService.getComments($stateParams.issueId,
 		function(data){
 			$scope.comments = data;
@@ -70,18 +71,20 @@ angular.module('citizen-engagement.issues', [])
 		}
 	);
 
-	addComment = function(post){
+	$scope.addComment = function(){
 		IssueService.addComments(
-			post,
+			$stateParams.issueId,
+			$scope.comment,
 			function(data){
-				$scope.comments.push(data);
+				$scope.comments = data.comments;
+				//$scope.comments.push(data);
 			},
 			function(error){
 				$scope.error = error;
 			}
 		);
 	}
-	
+
 	$scope.scrollBottom = function(){
 		$ionicScrollDelegate.scrollBottom();
 	}
@@ -113,7 +116,7 @@ angular.module('citizen-engagement.issues', [])
 		},
 
 		// Create a new issue.
-		addIssue : function (callback, errorCallback){
+		addIssue : function (issue, callback, errorCallback){
 			$http({
 				method: 'POST',
 				url: apiUrl + '/issues',
@@ -160,17 +163,14 @@ angular.module('citizen-engagement.issues', [])
 		},
 
 		// Add a new comment
-		addComments : function(post, callback, errorCallback){
+		addComments : function(issueId, post, callback, errorCallback){
 			$http({
 				method: 'POST',
 				url: apiUrl + '/issues/' + issueId + '/actions',
 				data: {
-					Comments:
-						{
 						  "type": "comment",
 						  "payload": {
 						    "text": post.text
-						  }
 						}
 				}
 			}).success(function(data, status, headers, config){

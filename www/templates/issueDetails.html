@@ -14,7 +14,14 @@
 	
 	<p>{{issue.description}}</p>
 	<hr>
-	<div ng-repeat="tag in tags">{{tag}}</div>	 
+	
+	<ul>
+		<li ng-repeat="tag in tags" class="icon-right ion-ios-pricetag-outline tag">{{tag}}</li>
+	</ul>
+
+
+
+
 </div>
 
 <div class="item tabs tabs-secondary tabs-icon-left">

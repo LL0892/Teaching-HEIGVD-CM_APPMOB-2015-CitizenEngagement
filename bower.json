@@ -2,7 +2,8 @@
   "name": "app",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.0.0-rc.0"
+    "ionic": "driftyco/ionic-bower#1.0.0-rc.0",
+    "angular-reverse-geocode": "*"
   },
   "dependencies": {
     "a0-angular-storage": "~0.0.9",

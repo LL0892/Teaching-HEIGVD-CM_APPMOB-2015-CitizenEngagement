@@ -92,7 +92,7 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 
 .tabs-striped .tabs {
   background-color: #262626;
-  color: #4894b3; /*icon color*/
+  
 }
 
 .tab-nav, .bar.bar-stable{
@@ -100,14 +100,13 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 
 .tab-item {
-    color: #3a3a3a;
-    opacity: inherit;
-    
+    color: #6f6f6f;
+    opacity: inherit;    
+}
+.tab-item .badge{
+  opacity: 0.5;
 }
 
-.tab-item.tab-item-active{
-  color:#193754 ;
-}
 
 .tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
   border-color: #006699;

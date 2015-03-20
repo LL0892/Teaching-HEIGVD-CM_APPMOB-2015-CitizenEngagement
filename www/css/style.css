@@ -24,6 +24,18 @@ $textGrey = #6f6f6f //text color grey unselected
 	background-position: center; 
 }*/
 
+/*---logout---*/
+
+.logout{
+line-height: 34px;
+font-size: 1.2em;
+margin-right: 10px;
+
+}
+.logout.activated{
+  color: #006699;
+}
+
 /*LOGIN style*/
 
 .login{
@@ -70,8 +82,13 @@ $textGrey = #6f6f6f //text color grey unselected
 
 /*---steam theme---*/
 
-.scroll-content {
+.scroll-content, .pane, .view {
   background-color: #262626;
+}
+
+
+h2 {
+    color:#006699;
 }
 
 .item {
@@ -206,7 +223,7 @@ div .issueHeader:after {
     font-size: 0.8em !important;
     display: inline-block;
     vertical-align: baseline; 
-   
+    color:#3a3a3a !important;
     /* ie 7*/
     *display: inline;
     *zoom:1;
@@ -242,9 +259,7 @@ div .issueHeader:after {
   border-style: none none solid;
 }
 /*--comments--*/
-h2 {
-    color:inherit;
-}
+
 .citizen{
   
 }
@@ -252,6 +267,10 @@ h2 {
   
 }
 
+.tab-item .addComment.activated{
+ color: #006699;
+
+}
 
 .staff::after {
     content: "";

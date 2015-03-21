@@ -94,6 +94,10 @@ h2 {
 .item {
   background-color: #262626;
   border-color: #3a3a3a;
+
+}
+.item.issueDetails{
+  border-top: none;
 }
 
 .item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {

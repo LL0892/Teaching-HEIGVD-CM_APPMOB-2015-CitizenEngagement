@@ -3,8 +3,12 @@
   "app_id": "bafe7671",
   "proxies": [
     {
-      "path": "/api-proxy",
-      "proxyUrl": "https://pure-gorge-1661.herokuapp.com/api"
-    }
+    	"path": "/api-proxy",
+    	"proxyUrl": "https://pure-gorge-1661.herokuapp.com/api"
+    },
+	{
+		"path": "/qimg-proxy",
+		"proxyUrl": "https://warm-bastion-3094.herokuapp.com/api"
+	}
   ]
 }

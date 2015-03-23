@@ -62,7 +62,7 @@ angular.module('citizen-engagement.issues', [])
 			$scope.issue = data;
 			$scope.commentsCpt = data.comments.length;
 			$scope.tags = data.tags;
-			$log.debug($scope.tags);
+			$log.debug($scope.issue);
 		},
 		function(error){
 			$scope.error = error;

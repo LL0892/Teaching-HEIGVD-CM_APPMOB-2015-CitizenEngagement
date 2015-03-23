@@ -32,7 +32,7 @@ angular.module('citizen-engagement.issues', [])
 })
 
 // Controller New Issue Page
-.controller('NewIssueController', function(IssueService, $log, $http, $scope, apiUrl){
+.controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken){
 		
 	// GET issuetypes
 	IssueService.getIssueTypes(
@@ -49,6 +49,31 @@ angular.module('citizen-engagement.issues', [])
 		IssueService.addIssue(issueToAdd);
 	}
 
+	$scope.takePic = function(){
+		CameraService.getPicture({
+			quality: 75,
+			targetWidth: 400,
+			targetHeight: 300,
+			// return base64-encoded data instead of a file
+			destinationType: Camera.DestinationType.DATA_URL
+		}).then(function(imageData) {
+			// upload the image
+			$http({
+				method: "POST",
+				url: qimgUrl + "/images",
+				headers: {
+					Authorization: "Bearer " + qimgToken
+				},
+				data: {
+					data: imageData
+				}
+			}).success(function(data) {
+				var imageUrl = data.url;
+				// do something with imageUrl
+			});
+		});
+	}
+
 })
 
 // Controller Detail Issue Page
@@ -62,7 +87,7 @@ angular.module('citizen-engagement.issues', [])
 			$scope.issue = data;
 			$scope.commentsCpt = data.comments.length;
 			$scope.tags = data.tags;
-			$log.debug($scope.issue);
+			$log.debug($scope.tags);
 		},
 		function(error){
 			$scope.error = error;

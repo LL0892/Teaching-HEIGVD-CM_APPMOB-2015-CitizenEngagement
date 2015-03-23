@@ -24,14 +24,31 @@ $textGrey = #6f6f6f //text color grey unselected
 	background-position: center; 
 }*/
 
+/*---logout---*/
+
+.logout{
+line-height: 34px;
+font-size: 1.2em;
+margin-right: 10px;
+
+}
+.logout.activated{
+  color: #006699;
+}
+
 /*LOGIN style*/
 
 .login{
 	background-image: url("../img/cities-skylines_flou.jpg");
-    background-size: cover;
+  background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center; 
 }
+
+.login.pane,.login.view,.login .scroll-content{
+    background-color: inherit; 
+}
+
 
 
 .button.disabled, .button[disabled] {
@@ -53,24 +70,81 @@ $textGrey = #6f6f6f //text color grey unselected
     color: #cfcfcf;
 }
 
-/*---main---*/
+
+.card .item:last-child, .list-inset .item:last-child, .padding > .list .item:last-child {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.card .item:first-child, .list-inset .item:first-child, .padding > .list .item:first-child {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+/*---steam theme---*/
+
+.scroll-content, .pane, .view {
+  background-color: #262626;
+}
 
 
-
-/*.scroll-content {
-    background-color: #161616;
+h2 {
+    color:#006699;
 }
 
 .item {
-    background-color: inherit;
-    border-color: #193754;
+  background-color: #262626;
+  border-color: #3a3a3a;
+
+}
+.item.issueDetails{
+  border-top: none;
 }
 
 .item.active, .item.activated, .item-complex.active .item-content, .item-complex.activated .item-content, .item .item-content.active, .item .item-content.activated {
-  border-color: #193754;
-  background-color: #193754; }
+  border-color: #3a3a3a;
+  background-color: #3a3a3a;
+}
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  color: #a8a8a8;
+  background-color: #262626;
+}
 
-*/
+  /*-------nav menu------------*/
+
+.tabs-striped .tabs {
+  background-color: #262626;
+  
+}
+
+.tab-nav, .bar.bar-stable{
+  background-color: #161616 !important;
+}
+
+.tab-item {
+    color: #6f6f6f;
+    opacity: inherit;    
+}
+.tab-item .badge{
+  opacity: 0.5;
+}
+
+
+.tabs-striped .tab-item.tab-item-active, .tabs-striped .tab-item.active, .tabs-striped .tab-item.activated {
+  border-color: #006699;
+  color: #006699;
+}
+
+.tabs-striped .tabs {
+  border-color: -moz-use-text-color -moz-use-text-color #3a3a3a;  
+}
+
+.bar.bar-stable {
+  border-color: #161616;   
+}
+
+
+
+
 /*---MAP---*/
 
 .leaflet-container{
@@ -153,7 +227,7 @@ div .issueHeader:after {
     font-size: 0.8em !important;
     display: inline-block;
     vertical-align: baseline; 
-   
+    color:#3a3a3a !important;
     /* ie 7*/
     *display: inline;
     *zoom:1;
@@ -176,7 +250,7 @@ div .issueHeader:after {
 
 }
 
-.tabs-striped.tabs-color-dark .tab-item.tab-item-active .badge, .tabs-striped.tabs-color-dark .tab-item.active .badge, .tabs-striped.tabs-color-dark .tab-item.activated .badge {
+.tabs-striped .tab-item.tab-item-active .badge, .tabs-striped .tab-item.active .badge, .tabs-striped .tab-item.activated .badge {
       top: 16px;
       opacity: 1; }
 
@@ -185,13 +259,11 @@ div .issueHeader:after {
   text-align: center;
 }
 .tagBorder{
-  border-color:#ddd;
+  border-color:#3a3a3a;
   border-style: none none solid;
 }
 /*--comments--*/
-h2 {
-    color:inherit;
-}
+
 .citizen{
   
 }
@@ -199,6 +271,10 @@ h2 {
   
 }
 
+.tab-item .addComment.activated{
+ color: #006699;
+
+}
 
 .staff::after {
     content: "";

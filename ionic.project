@@ -1,14 +1,14 @@
 {
   "name": "citizen-engagement",
-  "app_id": "bafe7671",
+  "app_id": "8119d8ac",
   "proxies": [
     {
-    	"path": "/api-proxy",
-    	"proxyUrl": "https://pure-gorge-1661.herokuapp.com/api"
+      "path": "/api-proxy",
+      "proxyUrl": "https://pure-gorge-1661.herokuapp.com/api"
     },
-	{
-		"path": "/qimg-proxy",
-		"proxyUrl": "https://warm-bastion-3094.herokuapp.com/api"
-	}
+    {
+      "path": "/qimg-proxy",
+      "proxyUrl": "https://warm-bastion-3094.herokuapp.com/api"
+    }
   ]
 }

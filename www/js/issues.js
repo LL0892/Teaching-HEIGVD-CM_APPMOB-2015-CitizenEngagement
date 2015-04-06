@@ -50,7 +50,6 @@ angular.module('citizen-engagement.issues', [])
 	}
 
 	$scope.takeIssuePhoto = function(){
-		$log.debug('click');
 	    takePhoto().then(uploadPhoto).then(function (data) {
 	      $scope.newIssue.imageUrl = data.data.url;
 	    }, function(error) {
@@ -141,7 +140,7 @@ angular.module('citizen-engagement.issues', [])
 })
 
 // NOT USED
-.controller("CameraController", function(CameraService, $http, qimgUrl, qimgToken) {
+/*.controller("CameraController", function(CameraService, $http, qimgUrl, qimgToken) {
 	// take the picture
 	CameraService.getPicture({
 		quality: 75,
@@ -165,7 +164,7 @@ angular.module('citizen-engagement.issues', [])
 			// do something with imageUrl
 		});
 	});
-})
+})*/
 
 .factory("CameraService", function($q) {
 	return {

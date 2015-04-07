@@ -5,13 +5,16 @@
 
 <!-- <button type="button" ng-controller="LogoutCtrl" ng-click="logOut()" class="button ion-log-out"></button> -->
 </ion-nav-buttons>
-
 <ion-content>
-
 <div class="search">
 	<input ng-model="searchText">
 	<i class="ion-search"></i>
 </div>
+</ion-content>
+
+<ion-content>
+
+
 
 
 
@@ -32,6 +35,7 @@
   
 	<form>
 		<button class="button button-full button-positive" ng-click="loadMoreIssues({{cpt}})">Load more issues !</button>
+		<button on-swipe-up="loadMoreIssues({{cpt}})" class="button button-full button-positive ion-arrow-down-c">swipe test more issues</button>
 	</form>
 
 </ion-list>

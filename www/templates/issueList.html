@@ -1,17 +1,25 @@
 <ion-view view-title="Issue List">
 <ion-nav-buttons side="secondary">
 <div ng-controller="LogoutCtrl" ng-click="logOut()" class="logout ion-log-out"></div>
+
+
 <!-- <button type="button" ng-controller="LogoutCtrl" ng-click="logOut()" class="button ion-log-out"></button> -->
 </ion-nav-buttons>
+
 <ion-content>
 
-Search: <input ng-model="searchText">
+<div class="search">
+	<input ng-model="searchText">
+	<i class="ion-search"></i>
+</div>
+
+
 
 <ion-list>
 
   
 	<div class="list">
-	    <a class="item item-thumbnail-left" ng-href="#/tab/issueDetails/{{issue.id}}" ng-repeat="issue in issues | filter:searchText"">
+	    <a class="item item-thumbnail-left" ng-href="#/tab/issueDetails/{{issue.id}}" ng-repeat="issue in issues | filter:searchText">
 	      <img src="{{issue.imageUrl}}">
 	      <div class="issueHeader">
 	      	<h2 class="issueTitle">{{issue.issueType.name}}</h2>

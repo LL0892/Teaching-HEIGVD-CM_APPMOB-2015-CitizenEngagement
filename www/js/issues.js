@@ -61,23 +61,23 @@ angular.module('citizen-engagement.issues', [])
 		$log.debug('lng : ' + issueToAdd.lng);
 		$log.debug('img : ' + issueToAdd.imageUrl);
 		
-		alert('lat : '+ issueToAdd.lat + 
+		/*alert('lat : '+ issueToAdd.lat + 
 			' // lng : ' + issueToAdd.lng + 
 			' // type : ' + issueToAdd.issuetype + 
 			' // desc : ' + issueToAdd.description + 
-			' // img : ' + issueToAdd.imageUrl);
-		/*IssueService.addIssue(issueToAdd, 
+			' // img : ' + issueToAdd.imageUrl);*/
+		IssueService.addIssue(issueToAdd, 
 		function(data){
 			alert('issue successfully added !');
 		},
 		function(error){
 			alert.error('An error occured : '+ error);
-		});*/
+		});
 	}
 
 	$scope.takeIssuePhoto = function(){
 	    takePhoto().then(uploadPhoto).then(function (data) {
-	    	alert('image successfully uploaded !');
+	    	//alert('image successfully uploaded !');
 	      $scope.issueToAdd.imageUrl = data.data.url;
 	    }, function(error) {
 			alert(error);

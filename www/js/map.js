@@ -34,7 +34,7 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 			$scope.mapMarkers = data;
 		}, 
 		function(error){
-			$log(error);
+			$log.debug(error);
 		}
 	);
 

@@ -12,6 +12,7 @@ angular.module('citizen-engagement.issues', [])
 		$scope.currentPage,
 		function(data){
 			$scope.issues = data;
+			$log.debug(data);
 		}, 
 		function(error){
 			$scope.error = error;
@@ -35,6 +36,7 @@ angular.module('citizen-engagement.issues', [])
 .controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken, geolocation){
 	
 	$scope.issueToAdd = {};
+	$scope.placeholderUrl = 'http://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
 
     geolocation.getLocation().then(function (data) {
         $scope.issueToAdd.lat = data.coords.latitude;
@@ -55,6 +57,13 @@ angular.module('citizen-engagement.issues', [])
 	);
 
 	$scope.addIssue = function (issueToAdd){
+		$log.debug('img : ' + issueToAdd.imageUrl);
+
+		if(issueToAdd.imageUrl === undefined){
+			issueToAdd.imageUrl = $scope.placeholderUrl;
+		}
+
+		$log.debug(issueToAdd);
 		$log.debug('desc : ' + issueToAdd.description);
 		$log.debug('type : ' + issueToAdd.issuetype);
 		$log.debug('lat : ' + issueToAdd.lat);
@@ -66,13 +75,13 @@ angular.module('citizen-engagement.issues', [])
 			' // type : ' + issueToAdd.issuetype + 
 			' // desc : ' + issueToAdd.description + 
 			' // img : ' + issueToAdd.imageUrl);*/
-		IssueService.addIssue(issueToAdd, 
+		/*IssueService.addIssue(issueToAdd, 
 		function(data){
-			alert('issue successfully added !');
+			$state.go('tab.issueDetails', {issueId: data.id});
 		},
 		function(error){
 			alert.error('An error occured : '+ error);
-		});
+		});*/
 	}
 
 	$scope.takeIssuePhoto = function(){

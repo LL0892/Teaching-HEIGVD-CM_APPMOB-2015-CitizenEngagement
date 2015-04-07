@@ -32,9 +32,16 @@ angular.module('citizen-engagement.issues', [])
 })
 
 // Controller New Issue Page
-.controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken){
+.controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken, geolocation){
 	
-	var newIssue = {};
+	$scope.issueToAdd = {};
+
+    geolocation.getLocation().then(function (data) {
+        $scope.issueToAdd.lat = data.coords.latitude;
+        $scope.issueToAdd.lng = data.coords.longitude;
+    }, function (error) {
+        $log.error("Could not get location: " + error);
+    });
 
 	// GET issuetypes
 	IssueService.getIssueTypes(
@@ -48,13 +55,30 @@ angular.module('citizen-engagement.issues', [])
 	);
 
 	$scope.addIssue = function (issueToAdd){
-		IssueService.addIssue(issueToAdd);
+		$log.debug('desc : ' + issueToAdd.description);
+		$log.debug('type : ' + issueToAdd.issuetype);
+		$log.debug('lat : ' + issueToAdd.lat);
+		$log.debug('lng : ' + issueToAdd.lng);
+		$log.debug('img : ' + issueToAdd.imageUrl);
+		
+		alert('lat : '+ issueToAdd.lat + 
+			' // lng : ' + issueToAdd.lng + 
+			' // type : ' + issueToAdd.issuetype + 
+			' // desc : ' + issueToAdd.description + 
+			' // img : ' + issueToAdd.imageUrl);
+		/*IssueService.addIssue(issueToAdd, 
+		function(data){
+			alert('issue successfully added !');
+		},
+		function(error){
+			alert.error('An error occured : '+ error);
+		});*/
 	}
 
 	$scope.takeIssuePhoto = function(){
 	    takePhoto().then(uploadPhoto).then(function (data) {
-	    	alert(data.data);
-	      $scope.newIssue.imageUrl = data.data.url;
+	    	alert('image successfully uploaded !');
+	      $scope.issueToAdd.imageUrl = data.data.url;
 	    }, function(error) {
 			alert(error);
 	    });
@@ -84,7 +108,6 @@ angular.module('citizen-engagement.issues', [])
 
 		return result;
 	}
-
 })
 
 // Controller Detail Issue Page
@@ -98,11 +121,11 @@ angular.module('citizen-engagement.issues', [])
 			$scope.issue = data;
 			$scope.commentsCpt = data.comments.length;
 			$scope.tags = data.tags;
-			$log.debug($scope.tags);
+			//$log.debug($scope.tags);
 		},
 		function(error){
 			$scope.error = error;
-			$log.debug(error);
+			//$log.debug(error);
 		}
 	);
 

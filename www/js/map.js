@@ -47,7 +47,7 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 
 	$scope.$on('leafletDirectiveMarker.click', function(e, args){
 		$log.debug(args.leafletEvent.target.options.id);
-		$state.go('tab.issueDetails', {issueId: args.leafletEvent.target.options.id});
+		$state.go('tab.issueDetailsFromMap', {issueId: args.leafletEvent.target.options.id});
 	});
 
 	function createMarkerScope(issue){

@@ -73,7 +73,7 @@ angular.module('citizen-engagement.issues', [])
 		
 		IssueService.addIssue(issueToAdd, 
 		function(data){
-			$state.go('tab.issueDetails', {issueId: data.id});
+			$state.go('tab.newIssueDetails', {issueId: data.id});
 		},
 		function(error){
 			alert.error('An error occured : '+ error);

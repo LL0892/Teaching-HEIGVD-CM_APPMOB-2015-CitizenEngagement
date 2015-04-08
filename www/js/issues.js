@@ -35,7 +35,7 @@ angular.module('citizen-engagement.issues', [])
 })
 
 // Controller New Issue Page
-.controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken, geolocation){
+.controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken, geolocation, $state){
 	
 	$scope.issueToAdd = {};
 	$scope.placeholderUrl = '../img/placeholder.png';
@@ -66,7 +66,7 @@ angular.module('citizen-engagement.issues', [])
 		}
 
 		$log.debug('desc : ' + issueToAdd.description);
-		$log.debug('type : ' + issueToAdd.issuetype);
+		$log.debug('type : ' + issueToAdd.issueTypeId);
 		$log.debug('lat : ' + issueToAdd.lat);
 		$log.debug('lng : ' + issueToAdd.lng);
 		$log.debug('img : ' + issueToAdd.imageUrl);

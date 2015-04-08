@@ -64,13 +64,6 @@ angular.module('citizen-engagement.issues', [])
 		if(issueToAdd.imageUrl === undefined){
 			issueToAdd.imageUrl = 'http://puu.sh/h5Xe2/3815e93f0a.png';
 		}
-		
-		// Replace issueType name by issueType id
-		//for (var i = $scope.issuetypes.length - 1; i >= 0; i--) {
-		//	if($scope.issuetypes[i].name === issueToAdd.issuetype){
-		//		issueToAdd.issuetype = $scope.issuetypes[i].id;
-		//	}
-		//};
 
 		$log.debug('desc : ' + issueToAdd.description);
 		$log.debug('type : ' + issueToAdd.issuetype);
@@ -239,7 +232,8 @@ angular.module('citizen-engagement.issues', [])
 				url: apiUrl + '/issues/',
 				headers: {
 					'Content-Type': 'application/json',
-					'x-pagination': page + ';20'
+					'x-pagination': page + ';25',
+					'x-sort': '-createdOn'
 				}
 			}).success(function(data, status, headers, config){
 				callback(data);

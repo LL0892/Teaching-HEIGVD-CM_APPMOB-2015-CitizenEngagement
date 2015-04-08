@@ -57,24 +57,25 @@ angular.module('citizen-engagement.issues', [])
 	);
 
 	$scope.addIssue = function (issueToAdd){
-		$log.debug('img : ' + issueToAdd.imageUrl);
 
+		// Change imageUrl with a placeholder if undefined
 		if(issueToAdd.imageUrl === undefined){
 			issueToAdd.imageUrl = $scope.placeholderUrl;
 		}
+		
+		// Replace issueType name by issueType id
+		for (var i = $scope.issuetypes.length - 1; i >= 0; i--) {
+			if($scope.issuetypes[i].name === issueToAdd.issuetype){
+				issueToAdd.issuetype = $scope.issuetypes[i].id;
+			}
+		};
 
-		$log.debug(issueToAdd);
 		$log.debug('desc : ' + issueToAdd.description);
 		$log.debug('type : ' + issueToAdd.issuetype);
 		$log.debug('lat : ' + issueToAdd.lat);
 		$log.debug('lng : ' + issueToAdd.lng);
 		$log.debug('img : ' + issueToAdd.imageUrl);
 		
-		/*alert('lat : '+ issueToAdd.lat + 
-			' // lng : ' + issueToAdd.lng + 
-			' // type : ' + issueToAdd.issuetype + 
-			' // desc : ' + issueToAdd.description + 
-			' // img : ' + issueToAdd.imageUrl);*/
 		/*IssueService.addIssue(issueToAdd, 
 		function(data){
 			$state.go('tab.issueDetails', {issueId: data.id});

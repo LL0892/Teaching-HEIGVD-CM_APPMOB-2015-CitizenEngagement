@@ -1,6 +1,6 @@
 var myapp = angular.module('citizen-engagement.map', ['geolocation']);
 
-myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToken, geolocation, IssueService, $log, apiUrl, $state){
+myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToken, geolocation, IssueService, $log, apiUrl, $state, $timeout){
 	
 	var mapboxTileLayer = "http://api.tiles.mapbox.com/v4/" + mapboxMapId;
 	mapboxTileLayer = mapboxTileLayer + "/{z}/{x}/{y}.png?access_token=" + mapboxAccessToken;
@@ -31,7 +31,14 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 	IssueService.getIssues(
 		pageCpt,
 		function(data){
-			$scope.mapMarkers = data;
+			$scope.mapMarkers = [];
+			for(var i = 0; i < data.length; i++){
+				// add only issues that have latitude and longitude
+				if(data[i].lat && data[i].lng){
+					$scope.mapMarkers.push(data[i]);
+				}
+			}
+			$log.debug(data);
 		}, 
 		function(error){
 			$log.debug(error);
@@ -50,6 +57,14 @@ myapp.controller('MapController', function($scope, mapboxMapId, mapboxAccessToke
 			return issue;
 		}
 	}
+
+	// broadcast when the map is displayed
+  	$scope.$on('$ionicView.beforeEnter', function() {
+     $timeout(function() {
+       $scope.$broadcast('invalidateSize');
+     });
+   });
+
 
 /*	$scope.mapMarkers.push({
 		lat: issue.lat,

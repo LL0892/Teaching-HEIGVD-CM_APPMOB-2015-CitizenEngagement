@@ -12,8 +12,11 @@
 		<h2 class="issueTitle">{{issue.issueType.name}}</h2>
 		<p class="state">{{issue.state}}</p>
 	</div>
-	<reverse-geocode lat="{{issue.lat}}" lng="{{issue.lng}}"></reverse-geocode>
-	
+
+	<div ng-if="issue.lat && issue.lng">
+		<reverse-geocode lat="{{issue.lat}}" lng="{{issue.lng}}"></reverse-geocode>
+	</div>
+
 	<p>{{issue.description}}</p>
 	<hr class="tagBorder">
 	<ul class="tags">

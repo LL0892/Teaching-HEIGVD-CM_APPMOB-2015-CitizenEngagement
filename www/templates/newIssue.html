@@ -24,7 +24,7 @@
           </div>
           <!--get issueType-->
           <select ng-model="issueToAdd.issuetype">
-            <option ng-repeat="option in issuetypes">{{option.name}}</option>
+            <option ng-repeat="option in issuetypes" value="{{option.id}}">{{option.name}}</option>
           </select>
         </label>
       </div>

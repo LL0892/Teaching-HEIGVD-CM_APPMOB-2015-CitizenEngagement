@@ -12,18 +12,20 @@ angular.module('citizen-engagement.issues', [])
 		$scope.currentPage,
 		function(data){
 			$scope.issues = data;
-			$log.debug(data);
+			$scope.currentPage++;
+			//$log.debug(data);
 		}, 
 		function(error){
 			$scope.error = error;
 		}
 	);
 
-	$scope.loadMoreIssues = function(page){
+	$scope.loadMoreIssues = function(){
 		IssueService.getIssues(
-			$scope.currentPage++,
+			$scope.currentPage,
 			function(data){
 				Array.prototype.push.apply($scope.issues, data);
+				$scope.currentPage++;
 			},
 			function(error){
 				$scope.error = error;
@@ -36,7 +38,7 @@ angular.module('citizen-engagement.issues', [])
 .controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken, geolocation){
 	
 	$scope.issueToAdd = {};
-	$scope.placeholderUrl = 'http://upload.wikimedia.org/wikipedia/commons/a/ac/No_image_available.svg';
+	$scope.placeholderUrl = '../img/placeholder.png';
 
     geolocation.getLocation().then(function (data) {
         $scope.issueToAdd.lat = data.coords.latitude;
@@ -60,15 +62,15 @@ angular.module('citizen-engagement.issues', [])
 
 		// Change imageUrl with a placeholder if undefined
 		if(issueToAdd.imageUrl === undefined){
-			issueToAdd.imageUrl = $scope.placeholderUrl;
+			issueToAdd.imageUrl = 'http://puu.sh/h5Xe2/3815e93f0a.png';
 		}
 		
 		// Replace issueType name by issueType id
-		for (var i = $scope.issuetypes.length - 1; i >= 0; i--) {
-			if($scope.issuetypes[i].name === issueToAdd.issuetype){
-				issueToAdd.issuetype = $scope.issuetypes[i].id;
-			}
-		};
+		//for (var i = $scope.issuetypes.length - 1; i >= 0; i--) {
+		//	if($scope.issuetypes[i].name === issueToAdd.issuetype){
+		//		issueToAdd.issuetype = $scope.issuetypes[i].id;
+		//	}
+		//};
 
 		$log.debug('desc : ' + issueToAdd.description);
 		$log.debug('type : ' + issueToAdd.issuetype);
@@ -76,13 +78,13 @@ angular.module('citizen-engagement.issues', [])
 		$log.debug('lng : ' + issueToAdd.lng);
 		$log.debug('img : ' + issueToAdd.imageUrl);
 		
-		/*IssueService.addIssue(issueToAdd, 
+		IssueService.addIssue(issueToAdd, 
 		function(data){
 			$state.go('tab.issueDetails', {issueId: data.id});
 		},
 		function(error){
 			alert.error('An error occured : '+ error);
-		});*/
+		});
 	}
 
 	$scope.takeIssuePhoto = function(){
@@ -237,7 +239,7 @@ angular.module('citizen-engagement.issues', [])
 				url: apiUrl + '/issues/',
 				headers: {
 					'Content-Type': 'application/json',
-					'x-pagination': page + ';25'
+					'x-pagination': page + ';20'
 				}
 			}).success(function(data, status, headers, config){
 				callback(data);
@@ -329,7 +331,7 @@ angular.module('citizen-engagement.issues', [])
 		},
 
 		// Retrieve the details of a specific issue type.
-		getIssueTypeDetails : function(){
+		getIssueTypeDetails : function(callback, errorCallback){
 			$http({
 				method: 'GET',
 				url: apiUrl + '/issueTypes/:id'
@@ -338,6 +340,24 @@ angular.module('citizen-engagement.issues', [])
 			}).error(function(data, status, headers, config){
 				errorCallback(data);
 			});			
+		},
+
+		// ***********
+		// My issues
+		// ***********
+		getMyIssues : function(page, callback, errorCallback){
+			$http({
+				method: 'GET',
+				url: apiUrl + '/me/issues',
+				headers: {
+					'Content-Type': 'application/json',
+					'x-pagination': page + ';25'
+				}
+			}).success(function(data, status, headers, config){
+				callback(data);
+			}).error(function(data, status, headers, config){
+				errorCallback(data);
+			});
 		}
 	}
 });

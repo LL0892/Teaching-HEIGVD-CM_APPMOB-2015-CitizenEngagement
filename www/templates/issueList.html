@@ -24,10 +24,13 @@
 	    </a>
 	</div>
   
-	<form>
-		<button class="button button-full button-positive" ng-click="loadMoreIssues()">Load more issues !</button>
-		<button on-swipe-up="loadMoreIssues()" class="button button-full button-positive ion-arrow-down-c">swipe test more issues</button>
-	</form>
+	
+
+	<div class="item tabs tabs-secondary tabs-icon-left more" ng-click="loadMoreIssues()" on-swipe-up="loadMoreIssues()">	
+		  <i class="icon ion-more"></i>
+	</div>
+
+	
 
 </ion-list>
 

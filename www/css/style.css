@@ -214,14 +214,21 @@ vertical-align: text-bottom;
     max-height: 200px;
 }
 .camera{
-  width: 60%;
+  width: 100px;
+  font-size: 3em;
   display: block;
   margin: auto;
+  border-radius: 30px;
 }
 
 .newIssueImg{
   display: block;
   margin: auto;
+}
+
+.card, .list-inset {
+    background-color: inherit;
+    
 }
 /*-----IssueList-----*/
 

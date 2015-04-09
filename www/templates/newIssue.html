@@ -5,7 +5,7 @@
   </ion-nav-buttons>
   <ion-content>
 
-
+    <div class="list list-inset">
     <!-- The issue form that the citizen must fill. -->
     <form name="issueForm">
 
@@ -32,13 +32,13 @@
         </label>
       </div>
 
+      
+
+      <img class="newIssueImg" ng-model="issueToAdd.imageUrl" ng-src="{{issueToAdd.imageUrl}}" ng-show="issueToAdd.imageUrl !== undefined" width="100px" height="100px"></img>
+
+      <img class="newIssueImg" ng-model="issueToAdd.imageUrl" ng-src="{{placeholderUrl}}" ng-show="issueToAdd.imageUrl === undefined" width="100px" height="100px"></img>
       <!--camera button-->
-      <button ng-click="takeIssuePhoto()" class="button icon ion-camera camera"></button>
-
-      <img class="newIssueImg" ng-model="issueToAdd.imageUrl" ng-src="{{issueToAdd.imageUrl}}" ng-show="issueToAdd.imageUrl !== undefined" width="100px" height="100px"></div>
-
-      <img class="newIssueImg" ng-model="issueToAdd.imageUrl" ng-src="{{placeholderUrl}}" ng-show="issueToAdd.imageUrl === undefined" width="100px" height="100px"></div>
-
+      <button ng-click="takeIssuePhoto()" class="button icon camera"><i class="ion-camera"></i></button>
       <!-- Display an error message here, above the submit button, if an error occurred. -->
       <p ng-if="error" class="error">{{ error }}</p>
 
@@ -49,7 +49,7 @@
       -->
       <button class="button button-full button-positive" ng-click="addIssue(issueToAdd)" ng-disabled="loginForm.$invalid">Add</button>
     </form>
-
+    </div>
 
   </ion-content>
 </ion-view>

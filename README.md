@@ -1,5 +1,3 @@
-API URL - Heroku : https://radiant-headland-3473.herokuapp.com/api
-
 # Citizen Engagement Mobile Application
 
 By Anthony Da Silva & Laurent Lienher
@@ -11,22 +9,15 @@ Welcome to the presentation of our marvelous app. Just right down you can access
 
 1. [Login](#login)
 2. [Adding a issue](#add)
-3. [Map](#map)
-4. [IssueList](#issueList)
-5. [IssueDetails](#issueDetails)
-  * [details](#issueDetails)
-  * [comments](#comments)
-
-
-
+3. [The Map](#map)
+4. [The list of the issues](#issueList)
+5. [The issue in details](#issueDetails)
+  * [The comments](#comments)
 
 <a name="login"></a>
 ## Login
 
-It's the first page that you'll saw. First you need to register yourself for using our app. Just fill the differents input and click on the register button !
-
-
-
+It's the first page that you'll saw. First you need to register yourself for using our APP. Just fill the differents input and click on the register button !
 
 <a href="#top">Back to top</a>
 
@@ -38,12 +29,11 @@ Wonderful ! If you're here, that's mean you've bean successfully registered. Now
 <a href="#top">Back to top</a>
 
 <a name="map"></a>
-## The map
+## The Map
 
 Just a little gadget ;)
 
 Just navigate trough it to see the different place where you can find some issue. And yes, you also can click on. Isn't it beautiful ?
-
 
 <a href="#top">Back to top</a>
 
@@ -65,7 +55,9 @@ The core of our APP, the issue. You can read the detais of the issue that you've
 ### The comments
 
 You also can comment in real time an issue. Just click on the comment button to acced at the comment section. You can read them and of course adding a new comment.
+
 <a href="#top">Back to top</a>
+
 
 We hope that we'll have some fun with our APP. Be free to report some issue in your town to improve your city. 
 

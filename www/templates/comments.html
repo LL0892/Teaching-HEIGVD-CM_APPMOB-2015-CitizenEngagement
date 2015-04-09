@@ -30,7 +30,7 @@
 		<div class="animate-show list" ng-show="showme">
 			<!-- text area -->
 			<label class="item item-input">
-				<textarea ng-model="comment.text" placeholder="Comments" required="required"></textarea>
+				<textarea placeholder="Comment" id="extensibleTextarea" ng-keyup="expandText()" ng-keydown="expandText()" ng-model="comment.text" placeholder="Comments" required="required"></textarea>
 			</label>
 
 			<!-- submit button -->

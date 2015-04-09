@@ -37,11 +37,12 @@ angular.module('citizen-engagement.issues', [])
 // Controller New Issue Page
 .controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken, geolocation, $state){
 	
+	
 	$scope.expandText = function(){
-	var element = document.getElementById("addIssueDescription");
+	var element = document.getElementById("extensibleTextarea");
 	element.style.height =  element.scrollHeight + "px";
 	}
-	
+
 	$scope.issueToAdd = {};
 	$scope.placeholderUrl = '../img/placeholder.png';
 
@@ -146,6 +147,11 @@ angular.module('citizen-engagement.issues', [])
 // Controller Comments Page
 .controller('CommentsController', function(IssueService, $ionicScrollDelegate, $log, $scope, $stateParams){
 
+	$scope.expandText = function(){
+	var element = document.getElementById("extensibleTextarea");
+	element.style.height =  element.scrollHeight + "px";
+	}
+	
 	$scope.comment = {};
 
 	IssueService.getComments($stateParams.issueId,

@@ -82,7 +82,7 @@ myapp.run(function($ionicPlatform) {
     .state('tab.newIssueDetails', {
       // We use a parameterized route for this state.
       // That way we'll know which issue to display the details of.
-      url: '/issueDetails/:issueId',
+      url: '/newIssueDetails/:issueId',
       views: {
         // Here we use the same "tab-issueMap" view as the previous state.
         // This means that the issue details template will be displayed in the same tab as the issue map.
@@ -108,7 +108,7 @@ myapp.run(function($ionicPlatform) {
     .state('tab.issueDetailsFromMap', {
       // We use a parameterized route for this state.
       // That way we'll know which issue to display the details of.
-      url: '/issueDetails/:issueId',
+      url: '/issueDetailsfromMap/:issueId',
       views: {
         // Here we use the same "tab-issueMap" view as the previous state.
         // This means that the issue details template will be displayed in the same tab as the issue map.

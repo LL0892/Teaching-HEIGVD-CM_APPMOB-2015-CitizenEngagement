@@ -37,6 +37,11 @@ angular.module('citizen-engagement.issues', [])
 // Controller New Issue Page
 .controller('NewIssueController', function(IssueService, CameraService, $log, $http, $scope, apiUrl, qimgUrl, qimgToken, geolocation, $state){
 	
+	$scope.expandText = function(){
+	var element = document.getElementById("addIssueDescription");
+	element.style.height =  element.scrollHeight + "px";
+	}
+	
 	$scope.issueToAdd = {};
 	$scope.placeholderUrl = '../img/placeholder.png';
 

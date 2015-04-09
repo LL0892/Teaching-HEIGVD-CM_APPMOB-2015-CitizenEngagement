@@ -112,11 +112,6 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   background-color: #3a3a3a;
   
 }
-.item.item-input{
-  border-style: solid;
-  border-width: 2px;
-  border-color: #006699;
-}
 
 .item-select select {
     background: none repeat scroll 0 0 #3a3a3a;
@@ -181,6 +176,7 @@ vertical-align: text-bottom;
   padding-left: 5px;
   padding-right: 5px;
   width: 80%;
+  text-align: center;
 }
 
 
@@ -214,8 +210,19 @@ vertical-align: text-bottom;
     
     width: 100%;
     resize: none;
+    margin-right: 15px;
+    max-height: 200px;
+}
+.camera{
+  width: 60%;
+  display: block;
+  margin: auto;
 }
 
+.newIssueImg{
+  display: block;
+  margin: auto;
+}
 /*-----IssueList-----*/
 
 .item, .item h1, .item h2, .item h3, .item h4, .item h5, .item h6, .item p, .item-content, .item-content h1, .item-content h2, .item-content h3, .item-content h4, .item-content h5, .item-content h6, .item-content p {

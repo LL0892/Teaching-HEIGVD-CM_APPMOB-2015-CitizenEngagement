@@ -65,9 +65,9 @@ margin-right: 10px;
 
 
 .button.button-positive.active, .button.button-positive.activated{
-    background-color: #262626;
-    border-color: #262626;
-    color: #cfcfcf;
+    background-color: #006699;
+    border-color: #006699;
+    color: #ffffff;
 }
 
 
@@ -153,6 +153,9 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .bar.bar-stable {
   border-color: #161616;   
 }
+.bar.bar-stable .title{
+    color:#6f6f6f;
+}
 
 /*-----search field-----*/
 
@@ -219,6 +222,14 @@ vertical-align: text-bottom;
   display: block;
   margin: auto;
   border-radius: 30px;
+  background-color: #a8a8a8;
+  border-color: #a8a8a8;
+  color: #262626;
+  margin-top: 15px;
+}
+.button:hover{
+  color: #262626;
+
 }
 
 .newIssueImg{
